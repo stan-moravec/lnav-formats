@@ -1,0 +1,37 @@
+{
+    "strace_log" : {
+        "title"         : "Strace log format",
+        "description"   : "Log format used by strace",
+        "url"           : "http://en.wikipedia.org/wiki/Strace",
+        "regex" : {
+            "p1"    : {
+                "pattern" : "^(?<pid>\\d+)?\\s*(?<timestamp>\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?)?\\s*(?:(?<syscall>\\w+)\\((?<args>.*)\\)\\s+=\\s+(?<ret>[-?\\w]+)\\s*(?:(?<errno>\\w+)\\s*)?(?:\\((?<perror>[^\\)]+)\\)\\s*)?(?:<(?<duration>\\d+\\.\\d+)>)?|(?:--- (?<signal>\\w+)\\s*(?<sigdetail>.*)? ---)|(?:\\+{3} (?<message>.*) \\+{3}))$"
+            }
+        },
+        "value" : {
+            "pid": { "kind" : "string", "identifier" : true },
+            "timestamp": { "kind" : "string", "identifier" : true },
+            "syscall"   : { "kind" : "string", "identifier" : true },
+            "ret"   : { "kind" : "string", "identifier" : true },
+            "errno" : { "kind" : "string", "identifier" : true },
+            "perror"    : { "kind" : "string", "identifier" : true },
+            "message"   : { "kind" : "string", "identifier" : true },
+            "signal"    : { "kind" : "string", "identifier" : true },
+            "sigdetail" : { "kind" : "string", "identifier" : true },
+            "duration"  : { "kind" : "float" },
+            "args"      : { "kind" : "string" }
+        },
+        "sample" : [
+            {
+                "line"  : "08:09:33 open(\"/etc/ld.so.cache\", O_RDONLY) = 3 <0.000023>"
+            },
+            {
+                "line"  : "7637  07:30:01 mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x2acf30791000"
+            },
+            {
+                "line"  : "101658 18:31:59.123456 stat(\"/sybase/OCS-15_0/lib\", {st_dev=makedev(8, 10), st_ino=917887, st_mode=S_IFDIR|0755, st_nlink=2, st_uid=1000, st_gid=1000, st_blksize=4096, st_blocks=8, st_size=4096, st_atime=2016/06/30-16:14:37, st_mtime=2016/01/06-10:15:45, st_ctime=2016/03/15-11:06:56}) = 0 <0.000006>"
+
+            }
+        ]
+    }
+}
